@@ -1,0 +1,13 @@
+h1. SHARC (Sharper Heuristic for Assignment of Robust Communities)
+
+This is the source code the SHARC community assignment algorithm and all its derivative algorithms, for use with the "GraphStream":http://www.graphstream-project.org dynamic graph library.
+
+h2. Scientific references
+
+G.-J. Herbiet and P. Bouvry, *“SHARC: community-based partitioning for mobile ad hoc networks using neighborhood similarity,”* in _IEEE WoWMoM 2010 (IEEE WoWMoM 2010)_, Montreal, Canada, June 2010.
+
+More information, and details "on my research page":http://herbiet.gforge.uni.lu/research.html.
+
+h2. License
+
+This program is licensed under the "GPL v.3":http://www.gnu.org/licenses/ license. See previous link or the file @gpl-3.0.texi@ for further details.
