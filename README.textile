@@ -6,6 +6,8 @@ h2. Scientific references
 
 G.-J. Herbiet and P. Bouvry, *“SHARC: community-based partitioning for mobile ad hoc networks using neighborhood similarity,”* in _IEEE WoWMoM 2010 (IEEE WoWMoM 2010)_, Montreal, Canada, June 2010.
 
+G.-J. Herbiet and P. Bouvry, *“On the Generation of Stable Communities of Users for Dynamic Mobile Ad Hoc Social Networks”* in _IEEE ICOIN 2011 (IEEE ICOIN 2011)_, Kuala Lumpur, Malaysia, February 2011.
+
 More information, and details "on my research page":http://herbiet.gforge.uni.lu/research.html.
 
 h2. License
