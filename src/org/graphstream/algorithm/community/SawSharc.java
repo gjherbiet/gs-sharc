@@ -35,7 +35,7 @@ import org.graphstream.graph.Node;
  */
 public class SawSharc extends Sharc {
 
-	protected boolean forcedYes = true;
+	protected boolean forcedYes = false;
 	
 	/**
 	 * Name of the marker that is used to store weight of links on the graph
@@ -71,7 +71,7 @@ public class SawSharc extends Sharc {
 	}
 
 	/**
-	 * Create a new SAw-Leung algorithm instance, attached to the specified
+	 * Create a new SAw-SHARC algorithm instance, attached to the specified
 	 * graph, using the specified marker to store the community attribute, and
 	 * the specified weightMarker to retrieve the weight attribute of graph
 	 * edges.
@@ -137,8 +137,8 @@ public class SawSharc extends Sharc {
 					.pow(super.similarity(a, b), (1.0 / cdfValue(a, b)) - 1.0);
 		}
 
-		System.out.println(a.getId() + " " + b.getId() + " " + "sim: "
-				+ super.similarity(a, b) + " wsim: " + sim);
+//		System.out.println(a.getId() + " " + b.getId() + " " + "sim: "
+//				+ super.similarity(a, b) + " wsim: " + sim);
 		return sim;
 	}
 
@@ -164,7 +164,7 @@ public class SawSharc extends Sharc {
 		Collections.sort(cdf);
 		Collections.reverse(cdf);
 
-		System.out.println(u.getId() + " " + cdf.toString());
+		//System.out.println(u.getId() + " " + cdf.toString());
 	}
 
 	protected Double cdfValue(Node a, Node b) {
@@ -182,15 +182,15 @@ public class SawSharc extends Sharc {
 		 */
 		Double val = (new Double(cdf.size()) - new Double(lighterLinks))
 				/ (new Double(cdf.size()));
-		System.out.println(a.getId() + " " + b.getId() + " " + "val: " + val);
+		//System.out.println(a.getId() + " " + b.getId() + " " + "val: " + val);
 		return val;
 	}
 
 	protected Double getWeightInLinkFrom(Node a, Node b) {
 		Double weight = 0.0;
 		if (a.hasEdgeFrom(b.getId())
-				&& a.getEdgeFrom(b.getId()).hasAttribute(weightMarker)) {
-			weight = (Double) a.getEdgeFrom(b.getId()).getAttribute(
+				&& a.<Edge>getEdgeFrom(b.getId()).hasAttribute(weightMarker)) {
+			weight = (Double) a.<Edge>getEdgeFrom(b.getId()).getAttribute(
 					weightMarker);
 		}
 		return weight;

@@ -25,8 +25,8 @@ import org.graphstream.graph.*;
  * Implementation of the SHARC community detection algorithm (Sharper Heuristic
  * for Assignment of Robust Communities).
  * 
- * @reference G.-J. Herbiet and P. Bouvry, “SHARC: community-based partitioning
- *            for mobile ad hoc networks using neighborhood similarity,” in
+ * @reference G.-J. Herbiet and P. Bouvry, SHARC: community-based partitioning
+ *            for mobile ad hoc networks using neighborhood similarity, in
  *            <i>IEEE WoWMoM 2010 (IEEE WoWMoM 2010)</i>, Montreal, Canada, 6
  *            2010.
  * 
@@ -81,7 +81,7 @@ public class Sharc extends EpidemicCommunityAlgorithm {
 		 * fall back to the "simple" epidemic assignment
 		 */
 		if (((Double) u.getAttribute(marker + ".score")) == 0.0) {
-			System.out.println(u.getId() + " Falling back to epidemic.");
+			//System.out.println(u.getId() + " Falling back to epidemic.");
 			communityScores.clear();
 			communityScores = communityCounts;
 			super.computeNode(u);
