@@ -89,7 +89,8 @@ public class SandSharc extends DynSharc {
 					Node v = e.getOpposite(u);
 					if (v.hasAttribute(marker)
 							&& v.<Object> getAttribute(marker).equals(
-									u.<Object> getAttribute(marker))) {
+									u.<Object> getAttribute(marker))
+							&& v.getId() != u.getAttribute(marker + ".originator_from")) {
 						scores.put(v, v.getNumber(marker + ".score"));
 						total += v.getNumber(marker + ".score");
 						if (v.getNumber(marker + ".score") > max)
@@ -102,13 +103,14 @@ public class SandSharc extends DynSharc {
 				 * only with a given probability. Otherwise token is passed
 				 * using weighted random walk
 				 */
-				if (max >= score || rng.nextDouble() < (max / score)) {
+				if (max > score || rng.nextDouble() < (max / score)) {
 
 					double random = rng.nextDouble() * total;
 					Node originator = null;
 					for (Node v : scores.keySet()) {
-						if (random <= scores.get(v)) {
-							originator = v;
+						if (random <= scores.get(v) &&
+							v.getId() != u.getAttribute(marker + ".originator_from")) {
+								originator = v;
 						} else {
 							random -= scores.get(v);
 						}
@@ -116,9 +118,12 @@ public class SandSharc extends DynSharc {
 
 					if (originator != null) {
 						u.removeAttribute(marker + ".originator");
+						u.removeAttribute(marker + ".originator_from");
+						
 						originator.setAttribute(marker + ".originator", true);
 						originator.setAttribute(marker + ".new_originator",
 								true);
+						originator.setAttribute(marker + ".originator_from", u.getId());
 					}
 				}
 			}
@@ -130,6 +135,7 @@ public class SandSharc extends DynSharc {
 			 */
 			else {
 				u.removeAttribute(marker + ".originator");
+				u.removeAttribute(marker + ".originator_from");
 
 				double score = Double.NEGATIVE_INFINITY;
 				Node originator = null;
